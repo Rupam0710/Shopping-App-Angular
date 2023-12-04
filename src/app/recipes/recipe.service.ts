@@ -1,11 +1,28 @@
 import { EventEmitter } from "@angular/core";
 import { Recipe } from "./recipe.model";
+import { Ingredients } from "../shared/ingredient.model";
 
 export class RecipeService {
     public recipeSelected = new EventEmitter<Recipe>();
     private recipes: Recipe[] = [
-        new Recipe('A Test Recipe', 'This is simply a test', 'https://asset.slimmingworld.co.uk/content/media/15704/vegetable-jambalaya-new_sw_recipe.jpg?v1=JGXiore20qg9NNIj0tmc3TKfKw-jr0s127JqqpCA2x7sMviNgcAYh1epuS_Lqxebn9V_qusKHfwbF7MOUrAPptzBhXIUL1Xnq2Mmdvx4fOk&width=640&height=640'),
-        new Recipe('Second Recipe', 'This is simply a test', 'https://asset.slimmingworld.co.uk/content/media/15704/vegetable-jambalaya-new_sw_recipe.jpg?v1=JGXiore20qg9NNIj0tmc3TKfKw-jr0s127JqqpCA2x7sMviNgcAYh1epuS_Lqxebn9V_qusKHfwbF7MOUrAPptzBhXIUL1Xnq2Mmdvx4fOk&width=640&height=640'),
+        new Recipe('Big Fat Burger',
+            'What else you need to say?',
+            'https://www.recipetineats.com/wp-content/uploads/2023/09/Crispy-fried-chicken-burgers_5.jpg',
+            [
+                new Ingredients('Bun', 1),
+                new Ingredients('Meat', 1),
+                new Ingredients('Mayonees', 1),
+            ]
+        ),
+        new Recipe('KFC - Chicken Wings',
+            'Its finger licking good',
+            'https://images.jdmagicbox.com/comp/mohali/c4/0172px172.x172.220923165644.r2c4/catalogue/kfc-mohali-fried-chicken-restaurants-0zvnbgfdiq.jpg?clr=',
+            [
+                new Ingredients('Meat', 12),
+                new Ingredients('Salad', 2),
+
+            ]
+        ),
     ];
 
     public getRecipes() {
