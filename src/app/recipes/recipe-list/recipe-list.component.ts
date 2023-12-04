@@ -1,17 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Recipe } from '../recipe.model';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
   styleUrl: './recipe-list.component.scss'
 })
-export class RecipeListComponent {
+export class RecipeListComponent implements OnInit {
   @Output() recipeWasSelected = new EventEmitter<Recipe>();
-  recipes: Recipe[] = [
-    new Recipe('A Test Recipe', 'This is simply a test', 'https://asset.slimmingworld.co.uk/content/media/15704/vegetable-jambalaya-new_sw_recipe.jpg?v1=JGXiore20qg9NNIj0tmc3TKfKw-jr0s127JqqpCA2x7sMviNgcAYh1epuS_Lqxebn9V_qusKHfwbF7MOUrAPptzBhXIUL1Xnq2Mmdvx4fOk&width=640&height=640'),
-    new Recipe('Second Recipe', 'This is simply a test', 'https://asset.slimmingworld.co.uk/content/media/15704/vegetable-jambalaya-new_sw_recipe.jpg?v1=JGXiore20qg9NNIj0tmc3TKfKw-jr0s127JqqpCA2x7sMviNgcAYh1epuS_Lqxebn9V_qusKHfwbF7MOUrAPptzBhXIUL1Xnq2Mmdvx4fOk&width=640&height=640'),
-  ];
+  recipes: Recipe[];
+
+  constructor(private recipeService: RecipeService) { }
+
+  ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipes();
+  }
+
 
   onRecipeSelected(recipe: Recipe) {
     this.recipeWasSelected.emit(recipe);
