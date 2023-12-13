@@ -28,8 +28,13 @@ export class RecipeService {
     ];
 
     constructor(private shoppingListService: ShoppingListService) { }
+
     public getRecipes() {
         return this.recipes.slice();
+    }
+
+    public getRecipe(index: number) {
+        return this.recipes[index];
     }
 
     public addIngredientsToShoppingList(ingredients: Ingredients[]) {
